@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Webhook Sender</title>
+<title>Webhook'd</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,22 +10,36 @@
 <div class="app">
     <!-- LEFT PANEL -->
     <div class="panel left">
-        <h2>Webhook Sender</h2>
+        <h1>Webhook'd</h1>
 
         <label>Webhook URL</label>
-        <input id="webhookUrl" placeholder="https://discord.com/api/webhooks/...">
+        <input id="webhookUrl">
 
         <label>Username</label>
-        <input id="username" placeholder="Webhook Bot">
+        <input id="username" placeholder="Webhook'd">
 
         <label>Avatar URL</label>
-        <input id="avatar" placeholder="https://...png">
+        <input id="avatar">
 
         <label>Message</label>
-        <textarea id="message" rows="6"></textarea>
+        <textarea id="message" rows="4"></textarea>
 
-        <button id="sendBtn">Send</button>
-        <p id="status"></p>
+        <details>
+            <summary>Embed</summary>
+            <label>Embed Title</label>
+            <input id="embedTitle">
+
+            <label>Embed Description</label>
+            <textarea id="embedDesc" rows="3"></textarea>
+
+            <label>Embed Color (hex)</label>
+            <input id="embedColor" placeholder="#2ea043">
+        </details>
+
+        <label>Send Time (optional)</label>
+        <input type="datetime-local" id="sendTime">
+
+        <button id="queueBtn">Queue Message</button>
     </div>
 
     <!-- RIGHT PANEL -->
@@ -36,12 +50,16 @@
             <img id="previewAvatar" class="avatar">
             <div class="content">
                 <div class="header">
-                    <span id="previewName" class="username">Webhook Bot</span>
+                    <span id="previewName">Webhook'd</span>
                     <span class="bot">BOT</span>
                 </div>
                 <div id="previewMessage" class="message"></div>
+                <div id="previewEmbed" class="embed"></div>
             </div>
         </div>
+
+        <h2>Queue</h2>
+        <div id="queue"></div>
     </div>
 </div>
 
