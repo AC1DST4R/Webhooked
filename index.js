@@ -1,32 +1,48 @@
-document.getElementById("sendBtn").addEventListener("click", async () => {
-const webhookUrl = document.getElementById("webhookUrl").value;
-const message = document.getElementById("message").value;
-const status = document.getElementById("status");
+const messageInput = document.getElementById("message");
+const usernameInput = document.getElementById("username");
+const avatarInput = document.getElementById("avatar");
 
-if (!webhookUrl || !message) {
-status.textContent = "Please enter both webhook URL and message.";
-status.style.color = "red";
-return;
+const previewMessage = document.getElementById("previewMessage");
+const previewName = document.getElementById("previewName");
+const previewAvatar = document.getElementById("previewAvatar");
+
+function renderMessage(text) {
+    return text
+        .replace(/<@(\d+)>/g, `<span class="mention">@user</span>`)
+        .replace(/<#(\d+)>/g, `<span class="mention">#channel</span>`);
 }
 
-const payload = { content: message };
-
-try {
-const response = await fetch(webhookUrl, {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify(payload)
+messageInput.addEventListener("input", () => {
+    previewMessage.innerHTML = renderMessage(messageInput.value);
 });
 
-if (response.status === 204) {
-status.textContent = "Message sent successfully! ✅";
-status.style.color = "green";
-} else {
-status.textContent = `Failed to send message. Status: ${response.status} ❌`;
-status.style.color = "red";
-}
-} catch (error) {
-status.textContent = "Error sending message: " + error;
-status.style.color = "red";
-}
+usernameInput.addEventListener("input", () => {
+    previewName.textContent = usernameInput.value || "Webhook Bot";
+});
+
+avatarInput.addEventListener("input", () => {
+    previewAvatar.src = avatarInput.value || "";
+});
+
+document.getElementById("sendBtn").addEventListener("click", async () => {
+    const webhookUrl = document.getElementById("webhookUrl").value;
+    const status = document.getElementById("status");
+
+    const payload = {
+        content: messageInput.value,
+        username: usernameInput.value || undefined,
+        avatar_url: avatarInput.value || undefined
+    };
+
+    try {
+        const res = await fetch(webhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
+        status.textContent = res.status === 204 ? "Sent ✅" : "Failed ❌";
+    } catch {
+        status.textContent = "Error ❌";
+    }
 });
