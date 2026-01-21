@@ -2,22 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Discord Webhook Sender</title>
+<title>Webhook Sender</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-<h1>Discord Webhook Sender</h1>
-<div class="form-group">
-<label for="webhookUrl">Webhook URL</label>
-<input type="text" id="webhookUrl" placeholder="Enter your webhook URL">
-</div>
-<div class="form-group">
-<label for="message">Message</label>
-<textarea id="message" placeholder="Enter your message" rows="5"></textarea>
-</div>
-<button id="sendBtn">Send</button>
-<p id="status"></p>
+
+<div class="app">
+    <!-- LEFT PANEL -->
+    <div class="panel left">
+        <h2>Webhook Sender</h2>
+
+        <label>Webhook URL</label>
+        <input id="webhookUrl" placeholder="https://discord.com/api/webhooks/...">
+
+        <label>Username</label>
+        <input id="username" placeholder="Webhook Bot">
+
+        <label>Avatar URL</label>
+        <input id="avatar" placeholder="https://...png">
+
+        <label>Message</label>
+        <textarea id="message" rows="6"></textarea>
+
+        <button id="sendBtn">Send</button>
+        <p id="status"></p>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="panel right">
+        <h2>Preview</h2>
+
+        <div class="discord-message">
+            <img id="previewAvatar" class="avatar">
+            <div class="content">
+                <div class="header">
+                    <span id="previewName" class="username">Webhook Bot</span>
+                    <span class="bot">BOT</span>
+                </div>
+                <div id="previewMessage" class="message"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="index.js"></script>
