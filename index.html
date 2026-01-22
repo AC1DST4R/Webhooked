@@ -8,59 +8,76 @@
 <body>
 
 <div class="app">
-    <!-- LEFT PANEL -->
-    <div class="panel left">
-        <h1>Webhook'd</h1>
 
-        <label>Webhook URL</label>
-        <input id="webhookUrl">
+<!-- LEFT PANEL -->
+<div class="panel left">
+    <h1>Webhook'd</h1>
 
-        <label>Username</label>
-        <input id="username" placeholder="Webhook'd">
+    <label>Webhook URL</label>
+    <input id="webhookUrl">
 
-        <label>Avatar URL</label>
-        <input id="avatar">
+    <label>Username (optional)</label>
+    <input id="username">
 
-        <label>Message</label>
-        <textarea id="message" rows="4"></textarea>
+    <label>Avatar URL (optional)</label>
+    <input id="avatar">
 
-        <details>
-            <summary>Embed</summary>
-            <label>Embed Title</label>
-            <input id="embedTitle">
+    <label>Message</label>
+    <textarea id="message" rows="4">Webhook'd By AC1DST4R</textarea>
 
-            <label>Embed Description</label>
-            <textarea id="embedDesc" rows="3"></textarea>
+    <label>Send Time (optional)</label>
+    <input type="datetime-local" id="sendTime">
 
-            <label>Embed Color (hex)</label>
-            <input id="embedColor" placeholder="#2ea043">
-        </details>
-
-        <label>Send Time (optional)</label>
-        <input type="datetime-local" id="sendTime">
-
-        <button id="queueBtn">Queue Message</button>
+    <div class="button-row">
+        <button class="primary" id="queueBtn">Queue Message</button>
+        <button class="danger" id="clearBtn">Clear All</button>
     </div>
 
-    <!-- RIGHT PANEL -->
-    <div class="panel right">
-        <h2>Preview</h2>
+    <label class="checkbox">
+        <input type="checkbox" id="skipConfirm">
+        Don’t ask for confirmation
+    </label>
 
-        <div class="discord-message">
-            <img id="previewAvatar" class="avatar">
-            <div class="content">
-                <div class="header">
-                    <span id="previewName">Webhook'd</span>
-                    <span class="bot">BOT</span>
-                </div>
-                <div id="previewMessage" class="message"></div>
-                <div id="previewEmbed" class="embed"></div>
+    <hr>
+
+    <div class="add-embed" id="addEmbedBtn">
+        <span class="plus">+</span> Add Embed
+    </div>
+
+    <div id="embedEditor" class="hidden">
+        <label>Embed Title</label>
+        <input id="embedTitle">
+
+        <label>Embed Description</label>
+        <textarea id="embedDesc" rows="3"></textarea>
+
+        <label>Embed Image URL</label>
+        <input id="embedImage">
+
+        <button class="danger" id="removeEmbed">Remove Embed</button>
+    </div>
+</div>
+
+<!-- RIGHT PANEL -->
+<div class="panel right">
+    <h2>Preview</h2>
+
+    <div class="discord-message">
+        <img id="previewAvatar" class="avatar">
+        <div>
+            <div class="header">
+                <span id="previewName">Webhook</span>
+                <span class="bot">BOT</span>
             </div>
+            <div id="previewMessage" class="message"></div>
+            <div id="previewEmbed" class="embed hidden"></div>
         </div>
-
-        <h2>Queue</h2>
-        <div id="queue"></div>
     </div>
+
+    <h2>Queue</h2>
+    <div id="queue"></div>
+</div>
+
 </div>
 
 <script src="index.js"></script>
