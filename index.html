@@ -33,11 +33,6 @@
         <button class="danger" id="clearBtn">Clear All</button>
     </div>
 
-    <label class="checkbox">
-        <input type="checkbox" id="skipConfirm">
-        Don’t ask for confirmation
-    </label>
-
     <hr>
 
     <div class="add-embed" id="addEmbedBtn">
@@ -62,6 +57,17 @@
 <div class="panel right">
     <h2>Preview</h2>
 
+    <!-- SETTINGS CARD -->
+    <div class="settings-card">
+        <label class="settings-option">
+            <input type="checkbox" id="skipConfirm">
+            <div class="settings-text">
+                <strong>Don’t ask for confirmation</strong>
+                <span>Clearing text will happen instantly</span>
+            </div>
+        </label>
+    </div>
+
     <div class="discord-message">
         <img id="previewAvatar" class="avatar">
         <div>
@@ -83,4 +89,3 @@
 <script src="index.js"></script>
 </body>
 </html>
-
