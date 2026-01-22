@@ -57,7 +57,7 @@ clearBtn.onclick = () => {
     webhookUrl.value = "";
     username.value = "";
     avatar.value = "";
-    msg.value = "Webhook'd By AC1DST4R";
+    msg.value = "";
     embedTitle.value = embedDesc.value = embedImage.value = "";
     previewMsg.innerHTML = "";
     previewEmbed.innerHTML = "";
@@ -129,3 +129,4 @@ async function send(item) {
 
 /* Init */
 previewMsg.innerHTML = parseMentions(msg.value);
+
