@@ -47,21 +47,47 @@ input, textarea {
 
 button {
     margin-top: 15px;
-    width: 100%;
     padding: 10px;
-    background: #2ea043;
-    border: none;
     border-radius: 6px;
-    color: white;
+    border: none;
     font-weight: 600;
     cursor: pointer;
 }
 
-button:hover {
+.primary {
+    background: #2ea043;
+    color: white;
+}
+
+.primary:hover {
     background: #3fb950;
 }
 
-/* Discord preview */
+.danger {
+    background: #da3633;
+    color: white;
+}
+
+.danger:hover {
+    background: #f85149;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+hr {
+    margin: 20px 0;
+    border: 1px solid #30363d;
+}
+
+/* Discord Preview */
 .discord-message {
     display: flex;
     margin-top: 20px;
@@ -72,11 +98,13 @@ button:hover {
     height: 40px;
     border-radius: 50%;
     margin-right: 12px;
+    background: #30363d;
 }
 
 .header {
     display: flex;
     gap: 6px;
+    align-items: center;
 }
 
 .bot {
@@ -84,14 +112,16 @@ button:hover {
     background: #5865f2;
     padding: 2px 6px;
     border-radius: 4px;
+    color: white;
 }
 
 .message {
     margin-top: 4px;
+    white-space: pre-wrap;
 }
 
 .mention {
-    background: rgba(88,101,242,.3);
+    background: rgba(88,101,242,0.3);
     padding: 2px 4px;
     border-radius: 4px;
 }
@@ -105,6 +135,27 @@ button:hover {
     border-radius: 4px;
 }
 
+/* Add Embed */
+.add-embed {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #3fb950;
+    font-weight: 600;
+}
+
+.plus {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #2ea043;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Queue */
 .queue-item {
     margin-top: 10px;
@@ -113,4 +164,8 @@ button:hover {
     border: 1px solid #30363d;
     border-radius: 6px;
     font-size: 13px;
+}
+
+.hidden {
+    display: none;
 }
